@@ -118,6 +118,11 @@
     _inputView.text = text;
 }
 
+- (void)becomeFirstResponder
+{
+    [_inputView becomeFirstResponder];
+}
+
 - (void)addTags:(NSArray *)tags
 {
     for (NSString *tag in tags)
@@ -333,7 +338,7 @@
     _inputView.font = _font;
     _inputView.layer.borderColor = _tagBackgroundColor.CGColor;
     _inputView.layer.borderWidth = 1.0f;
-    _inputView.layer.cornerRadius = _inputView.frame.size.height * 0.5f;
+    _inputView.layer.cornerRadius = self.tagCornerRadius?:(_inputView.frame.size.height * 0.5f);
     _inputView.backgroundColor = [UIColor clearColor];
     _inputView.textColor = _tagBackgroundColor;
 
@@ -386,7 +391,7 @@
     btnFrame.origin.y = _tagGap + 6.0f;
     btnFrame.size.width = [tagBtn.titleLabel.text sizeWithAttributes:@{NSFontAttributeName:_font}].width + (tagBtn.layer.cornerRadius * 2.0f) + 20.0f;
     btnFrame.size.height = self.frame.size.height - 13.0f;
-    tagBtn.layer.cornerRadius = btnFrame.size.height * 0.5f;
+    tagBtn.layer.cornerRadius = self.tagCornerRadius?:(btnFrame.size.height * 0.5f);
     tagBtn.frame = CGRectIntegral(btnFrame);
     
     NSLog(@"btn frame [%@] = %@", tag, NSStringFromCGRect(tagBtn.frame));

@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UIColor *tagForegroundColor;
 @property (nonatomic, assign) int maxTagLength;
 @property (nonatomic, assign) CGFloat tagGap;
+@property (nonatomic, assign) CGFloat tagCornerRadius;
 
 //
 // data
@@ -41,6 +42,8 @@
 - (void)removeTags:(NSArray *)tags;
 - (void)addTagToLast:(NSString *)tag animated:(BOOL)animated;
 - (void)removeTag:(NSString *)tag animated:(BOOL)animated;
+
+- (void)becomeFirstResponder;
 
 @end
 
