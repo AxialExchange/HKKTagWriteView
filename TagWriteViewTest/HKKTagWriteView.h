@@ -37,6 +37,7 @@
 
 - (void)clear;
 - (void)setTextToInputSlot:(NSString *)text;
+- (void)layoutInputAndScroll; // call after setting cornerRadius
 
 - (void)addTags:(NSArray *)tags;
 - (void)removeTags:(NSArray *)tags;
