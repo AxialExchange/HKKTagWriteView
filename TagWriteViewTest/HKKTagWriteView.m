@@ -506,7 +506,8 @@
 
         if ([text isEqualToString:@"\n"])
         {
-            [textView resignFirstResponder];
+//            [textView resignFirstResponder]; //Don't dismiss keyboard when user taps "Done" anymore.
+            
         }
 
         return NO;
