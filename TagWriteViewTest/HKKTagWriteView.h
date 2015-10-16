@@ -25,7 +25,7 @@
 //
 // data
 //
-@property (nonatomic, readonly) NSArray *tags;
+@property (nonatomic, readonly) NSArray<NSString *> *tags;
 
 //
 // control
