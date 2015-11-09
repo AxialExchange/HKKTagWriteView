@@ -30,7 +30,7 @@
 @implementation HKKTagWriteView
 
 #pragma mark - Life Cycle
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -57,7 +57,7 @@
     _font = font;
     for (UIButton *btn in _tagViews)
     {
-        [btn.titleLabel setFont:_font];
+        (btn.titleLabel).font = _font;
     }
 }
 
@@ -66,7 +66,7 @@
     _tagBackgroundColor = tagBackgroundColor;
     for (UIButton *btn in _tagViews)
     {
-        [btn setBackgroundColor:_tagBackgroundColor];
+        btn.backgroundColor = _tagBackgroundColor;
     }
     
     _inputView.layer.borderColor = _tagBackgroundColor.CGColor;
@@ -271,7 +271,7 @@
         return;
     }
     
-    UIView *deletedView = [_tagViews objectAtIndex:index];
+    UIView *deletedView = _tagViews[index];
     [deletedView removeFromSuperview];
     [_tagViews removeObject:deletedView];
     
@@ -279,7 +279,7 @@
         CGFloat posX = _tagGap;
         for (int idx = 0; idx < _tagViews.count; ++idx)
         {
-            UIView *view = [_tagViews objectAtIndex:idx];
+            UIView *view = _tagViews[idx];
             CGRect viewFrame = view.frame;
             viewFrame.origin.x = posX;
             view.frame = viewFrame;
@@ -380,8 +380,8 @@
 - (UIButton *)tagButtonWithTag:(NSString *)tag posX:(CGFloat)posX
 {
     UIButton *tagBtn = [[UIButton alloc] init];
-    [tagBtn.titleLabel setFont:_font];
-    [tagBtn setBackgroundColor:_tagBackgroundColor];
+    (tagBtn.titleLabel).font = _font;
+    tagBtn.backgroundColor = _tagBackgroundColor;
     [tagBtn setTitleColor:_tagForegroundColor forState:UIControlStateNormal];
     [tagBtn addTarget:self action:@selector(tagButtonDidPushed:) forControlEvents:UIControlEventTouchUpInside];
     [tagBtn setTitle:tag forState:UIControlStateNormal];
@@ -489,7 +489,7 @@
     _deleteButton.hidden = YES;
     [_deleteButton removeFromSuperview];
     
-    NSString *tag = [_tagsMade objectAtIndex:_deleteButton.tag];
+    NSString *tag = _tagsMade[_deleteButton.tag];
     [self removeTag:tag animated:YES];
 }
 
