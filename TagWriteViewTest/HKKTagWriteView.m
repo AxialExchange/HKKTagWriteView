@@ -118,9 +118,9 @@
     _inputView.text = text;
 }
 
-- (void)becomeFirstResponder
+- (BOOL)becomeFirstResponder
 {
-    [_inputView becomeFirstResponder];
+    return [_inputView becomeFirstResponder];
 }
 
 - (void)addTags:(NSArray *)tags
