@@ -44,7 +44,7 @@
 - (void)addTagToLast:(NSString *)tag animated:(BOOL)animated;
 - (void)removeTag:(NSString *)tag animated:(BOOL)animated;
 
-- (BOOL)becomeFirstResponder;
+@property (readonly) BOOL becomeFirstResponder;
 
 @end
 
